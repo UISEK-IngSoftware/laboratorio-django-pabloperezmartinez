@@ -122,7 +122,7 @@ python3 manage.py migrate
 python manage.py migrate
 ~~~
 
-### Almacenar depdendencias y librerías instaladas
+### Almacenar dependencias y librerías instaladas
 #### Linux o MaCOS
 ~~~
 pip3 freeze > requirements.txt
@@ -134,3 +134,98 @@ pip freeze > requirements.txt
 
 # Nota
 Para los siguientes pasos se deberán seguir las instrucciones del docente en clase. No olvide que puedes contactarlo a <paperez@puce.edu.ec> o a <pablo.perez@uisek.edu.ec> dependiendo de la institución donde te encuentres
+
+
+# Ejemplos de Cadenas de Conexión para Django
+
+### PostgreSQL
+
+- Instalar pyscopg2
+    ```bash
+    pip3 install psycopg2
+    ```
+- Configurar archivo settings.py
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'nombre_de_tu_base_de_datos',
+            'USER': 'tu_usuario',
+            'PASSWORD': 'tu_contraseña',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+    ```
+### MySQL
+- Instalar mysqlclient
+    ```bash
+    pip3 install mysqlclient
+    ```
+- Configurar archivo settings.py
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'nombre_de_tu_base_de_datos',
+            'USER': 'tu_usuario',
+            'PASSWORD': 'tu_contraseña',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
+    ```
+
+### SQLite
+- Configurar archivo settings.py
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+    ```
+
+### Oracle
+
+- Instalar cx_Oracle
+    ```bash
+    pip3 install cx_Oracle
+    ```
+- Configurar archivo settings.py
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.oracle',
+            'NAME': 'nombre_de_tu_base_de_datos',
+            'USER': 'tu_usuario',
+            'PASSWORD': 'tu_contraseña',
+            'HOST': 'localhost',
+            'PORT': '1521',
+        }
+    }
+    ```
+
+### SQL Server (usando django-mssql-backend)
+
+- Instalar cx_Oracle
+    ```bash
+    pip3 install django-mssql-backend
+    ```
+- Configurar archivo settings.py
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'sql_server.pyodbc',
+            'NAME': 'nombre_de_tu_base_de_datos',
+            'USER': 'tu_usuario',
+            'PASSWORD': 'tu_contraseña',
+            'HOST': 'localhost',
+            'PORT': '1433',
+            'OPTIONS': {
+                'driver': 'ODBC Driver 17 for SQL Server',
+            },
+        }
+    }
+    ```
